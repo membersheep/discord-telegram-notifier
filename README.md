@@ -4,7 +4,7 @@
 ## Installation
 ```npm install```
 
-##Configuration
+## Configuration
 - Create telegram bot (https://core.telegram.org/bots).
 - Copy telegram bot token to your config.
 - Create discord bot(https://github.com/reactiflux/discord-irc/wiki/Creating-a-discord-bot-&-getting-a-token).
