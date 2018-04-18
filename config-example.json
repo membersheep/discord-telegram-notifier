@@ -1,0 +1,12 @@
+{
+    "discord": {
+        "token": "",
+        "channel_id": ""
+    },
+    "telegram": {
+        "token": "",
+        "chat_id": ""
+    },
+    "loglevel": "info"
+}
+
