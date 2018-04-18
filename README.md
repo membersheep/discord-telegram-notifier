@@ -1,16 +1,16 @@
-# Discord<->Telegram
+# Discord to Telegram notifier
+ Discord+Telegram bot to print discord connected users list to a telegram chat. 
 
 ## Installation
 ```npm install```
 
-# Telegram Configuration
-- Speak to ```@BotFather``` on telegram
-- Create a new bot with ```/newbot```
-- ```/setjoingroups``` ENABLED
-- ```/setprivacy``` DISABLED
-- Put the bot token into ```config.json```
-- Put the chat id into ```config.json```
+##Configuration
+- Create telegram bot (https://core.telegram.org/bots).
+- Copy telegram bot token to your config.
+- Create discord bot(https://github.com/reactiflux/discord-irc/wiki/Creating-a-discord-bot-&-getting-a-token).
+- Copy discord bot token to your config.
 
-# Discord Configuration
+## Deployment
+```node index.js```
 
-- [Read this](https://github.com/reactiflux/discord-irc/wiki/Creating-a-discord-bot-&-getting-a-token)
+
