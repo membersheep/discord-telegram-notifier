@@ -37,8 +37,9 @@ const usersReducer = function(currentValue, user) {
 
 tg.on('message', function(message){
     logger.debug('[telegram-%s]: <%s> %s', message.chat.title, message.from.username, message.text);
-    if (message.text != "/discord") 
+    if (message.text.startsWith("/discord")) {
         return;
+    }
     var message_out = 'users: ' + dc.users.reduce(usersReducer);
     logger.info(message_out);
     tg.sendMessage(message.chat.id, message_out);
