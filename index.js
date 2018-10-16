@@ -27,20 +27,35 @@ dc.on('message', function(message) {
     logger.info(message + ' received');
 });
 
-// Telegram commands
-const usersReducer = function(currentValue, user) {
-    if (user.presence.status == 'online') {
-        return currentValue + ' ' + user.username;
-    }
-    return currentValue;
-};
+// Telegram events
 
-tg.on('message', function(message){
+const onTelegramMessage = function(message) {
     logger.debug('[telegram-%s]: <%s> %s', message.chat.title, message.from.username, message.text);
-    if (message.text.startsWith("/discord")) {
+    if (!message.text.startsWith('/discord')) {
         return;
     }
-    var message_out = 'users: ' + dc.users.reduce(usersReducer);
+    var message_out = 'Online users: ';
+    var usersList = '';
+    dc.users.forEach(function(user, key, map) {
+        if (user.bot == true) {
+            return;
+        }
+        var game = '';
+        if (user.game != null) {
+            game = '(' + user.game.name + ')';
+        }
+        if (user.presence.status == 'online') {
+            usersList = usersList + ' ' + user.username + game;
+        }
+    });
+    if (usersList != '') {
+        message_out = message_out + usersList;
+    } else {
+        message_out = message_out + 'none';
+    }
     logger.info(message_out);
     tg.sendMessage(message.chat.id, message_out);
-});
+};
+
+
+tg.on('message', onTelegramMessage);
